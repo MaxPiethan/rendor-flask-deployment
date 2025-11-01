@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Mein Notizbuch</title>
+    <style>
+        .loeschen-button{
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor:pointer;
+        }
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f0f4ff;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-btn {
+            background-color: #ff0000;
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+
+        .delete-btn:hover {
+            background-color: #b02a37;
+        }
+
+        .clear-btn {
+            width: 100%;
+            margin-top: 10px;
+            background-color: #6c757d;
+        }
+
+        .clear-btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Mein Notizbuch</h1>
+
+        <!-- Formular zum Hinzufügen -->
+        <form method="POST" autocomplete="off">
+            <input type="text" name="neue_notiz" placeholder="Neue Notiz..." required autocomplete="off" autocapitalize="off">
+            <button type="submit" name="aktion" value="hinzufuegen">Hinzufügen</button>
+        </form>
+
+        <!-- Liste der Notizen -->
+        <ul>
+    {% for notiz in notizen %}
+    <li style="position: relative; display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+            {{ notiz.text }}
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 5px;">
+            <small>{{ notiz.datum }}</small>
+            <form method="POST" style="margin: 0;">
+                <input type="hidden" name="index" value="{{ loop.index0 }}">
+                <input type="hidden" name="aktion" value="loeschen">
+                <button type="submit" class="loeschen-button">Löschen</button>
+            </form>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+        <!-- Alle löschen -->
+        <form method="POST">
+            <button type="submit" name="aktion" value="alle_loeschen" class="clear-btn">🗑️ Alle löschen</button>
+        </form>
+    </div>
+</body>
+</html>

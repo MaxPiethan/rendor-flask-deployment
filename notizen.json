@@ -1,0 +1,18 @@
+[
+    {
+        "text": "Hallo",
+        "datum": "11-01 10:39"
+    },
+    {
+        "text": "Kaffe",
+        "datum": "11-01 10:39"
+    },
+    {
+        "text": "Kuchen",
+        "datum": "11-01 10:39"
+    },
+    {
+        "text": "li Container bleibt für die Notiz.  Text der Notiz links.  Datum + Löschbutton rechts in einem vertikalen Stack (flex-direction: column).  gap: 5px sorgt für Abstand zwischen Datum und Button.  Notiztext wird nicht verschoben, da rechts ein separater Container für Datum + Button existiert.  Wenn du willst, kann ich dein gesamtes HTML/CSS Template fertig anpassen, sodass jede Notiz sauber aussieht, Datum über dem roten Button steht, und die Notizen eine moderne Box haben.  Willst du, dass ich das mache?",
+        "datum": "11-01 10:39"
+    }
+]
